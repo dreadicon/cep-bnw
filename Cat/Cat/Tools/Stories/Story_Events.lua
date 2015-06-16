@@ -46,15 +46,9 @@ function CheckTriggers(player)
 	end
 
 	local playerID			= player:GetID()
-	local activePlayerID	= Game.GetActivePlayer()
-	local activePlayer		= Players[activePlayerID]
 	local trigChance		= MapModData.Cep_TrigChance[playerID]
 	local rand				= 1 + Map.Rand(100, "CheckTriggers")
 	local doCheck			= true
-
-	if DEBUG_TRIGGERS then
-		trigChance = (player == activePlayer) and 100 or 0
-	end
 	
 	if (MapModData.Cep_BlockTriggers[playerID] == 0) and (trigChance >= rand) then
 		if player:IsHuman() then
